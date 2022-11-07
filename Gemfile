@@ -53,3 +53,5 @@ gem "rack-cors", "~> 1.1"
 gem 'byebug'
 
 gem "rolify", "~> 6.0"
+
+gem "faker", "~> 3.0"
