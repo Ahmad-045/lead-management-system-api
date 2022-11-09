@@ -2,7 +2,6 @@ class Users::SessionsController < Devise::SessionsController
   respond_to :json
 
   def respond_with(_resource, _opts={})
-
     render json: { status: :unauthorized} unless current_user
 
     render json: {

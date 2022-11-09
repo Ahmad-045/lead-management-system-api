@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
   }
-  get '/member-data', to: 'member#show'
+  get '/get_managers', to: 'users#get_managers'
   resources :users
+  resources :leads
+  resources :phases
 end
