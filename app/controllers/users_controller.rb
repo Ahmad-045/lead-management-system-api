@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  respond_to :json
+
   def index
     @users = User.all
     render json: @users
@@ -7,6 +9,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     assign_new_roles_to_user(@user)
+    render json: :ok
   end
 
   def get_managers
@@ -22,8 +25,8 @@ class UsersController < ApplicationController
   private
 
   def assign_new_roles_to_user(user)
-    # params[:data].each do |role|
-    #   @user.add_role role
-    # end
+    params[:data].each do |role|
+      @user.add_role role
+    end
   end
 end

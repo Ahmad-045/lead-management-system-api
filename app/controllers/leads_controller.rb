@@ -1,4 +1,5 @@
 class LeadsController < ApplicationController
+  respond_to :json
 
   def index
     user = set_user_from_token

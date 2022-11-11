@@ -1,4 +1,5 @@
 class PhasesController < ApplicationController
+  respond_to :json
 
   def create
     @phase = Phase.create set_phase_params
