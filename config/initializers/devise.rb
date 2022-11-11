@@ -17,7 +17,9 @@ Devise.setup do |config|
   # config.secret_key = 'dfa1181615e6b58ee1d036c06d72abfb9810fdf218b7f48a2801b231d4948ffbc1617c4f62af21708fd7a5f45a144efbd07bab7a0eb82060581a2c8a07e910f7'
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.devise[:jwt_secret_key] #Create the bearer token
+    # jwt.secret = ENV['JWT_DEVISE_TOKEN']
+    # jwt.secret = Rails.application.credentials.devise[:jwt_secret_key] # Create the bearer token
+    puts jwt.secret
   end
 
   # ==> Controller configuration
