@@ -8,6 +8,7 @@ class Users::SessionsController < Devise::SessionsController
       message: "You are logged in. ",
       user: current_user
     }, status: :ok
+
   end
 
   private

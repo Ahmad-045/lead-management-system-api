@@ -8,6 +8,7 @@ class LeadsController < ApplicationController
   end
 
   def create
+    authorize Lead.new
     @lead = Lead.new set_lead_params
     if @lead.save
       render json: {status: :ok}

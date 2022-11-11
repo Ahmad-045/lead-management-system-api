@@ -57,3 +57,5 @@ gem "rolify", "~> 6.0"
 gem "faker", "~> 3.0"
 
 gem 'active_model_serializers'
+
+gem 'pundit'

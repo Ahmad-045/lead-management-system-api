@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   respond_to :json
 
+
   def index
+    authorize User
     @users = User.all
     render json: @users
   end

@@ -1,14 +1,17 @@
 class ApplicationController < ActionController::API
+  include Pundit::Authorization
+
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # private
-  # def record_not_unique
-  #   render json: {data: 'Record Not Unique', status: :conflict}
-  # end
-  # protect_from_forgery with: :null_session
+  private
+
+  def user_not_authorized
+    render json: {error: 'You are not authorized to perform this action.', status: :unauthorized}
+  end
+
   protected
 
   def configure_permitted_parameters
