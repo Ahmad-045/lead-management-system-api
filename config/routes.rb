@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :leads
   resources :phases
+  resources :projects
 
   # root to: 'lead#loggedIn'
   get '/get_managers', to: 'users#get_managers'

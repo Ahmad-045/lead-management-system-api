@@ -3,7 +3,7 @@ class LeadsController < ApplicationController
 
   def index
     user = set_user_from_token
-    @leads = Lead.all
+    @leads = Lead.all.order(id: :asc)
     render json: @leads
   end
 
