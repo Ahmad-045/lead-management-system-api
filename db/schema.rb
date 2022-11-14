@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2022_11_11_114811) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "sale", default: false
+    t.date "sale"
     t.index ["user_id"], name: "index_leads_on_user_id"
   end
 

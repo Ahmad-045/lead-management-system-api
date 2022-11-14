@@ -2,7 +2,7 @@ class LeadsController < ApplicationController
   respond_to :json
 
   def index
-    user = set_user_from_token
+    current_user = set_user_from_token
     @leads = Lead.all.order(id: :asc)
     render json: @leads
   end
