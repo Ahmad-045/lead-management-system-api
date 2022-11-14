@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/get_managers', to: 'users#get_managers'
   get '/get_engineers', to: 'users#get_engineers'
   get '/get_engineer_users/:id', to: 'phases#get_engineer_users'
+  get '/user_role/:id', to: 'users#user_role'
   post '/assign_engineer', to: 'phases#assign_engineer'
 end

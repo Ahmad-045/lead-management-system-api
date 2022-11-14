@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
+    @user.roles = []
     assign_new_roles_to_user(@user)
     render json: :ok
   end
