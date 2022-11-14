@@ -1,4 +1,4 @@
-class LeadPolicy < ApplicationPolicy
+class PhasePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -10,6 +10,9 @@ class LeadPolicy < ApplicationPolicy
     is_bd || is_admin
   end
 
+  def update?
+    is_bd || is_admin
+  end
 
   def is_bd
     @user.has_role? :bd
@@ -18,4 +21,5 @@ class LeadPolicy < ApplicationPolicy
   def is_admin
     @user.has_role? :admin
   end
+
 end

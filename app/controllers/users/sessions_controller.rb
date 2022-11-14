@@ -4,12 +4,15 @@ class Users::SessionsController < Devise::SessionsController
   def respond_with(_resource, _opts={})
     # byebug
     # render json: { status: :unauthorized} unless current_user
+    # @data = UserSerializer.new(current_user)
 
-    render json: {
-      message: "You are logged in. ",
-      user: current_user
-    }, status: :ok
-
+    if current_user
+      render json: {
+        message: "You are logged in. ",
+        # user: current_user
+        user: ActiveModelSerializers::SerializableResource.new(current_user, serializer: UserSerializer)
+      }, status: :ok
+    end
   end
 
   private

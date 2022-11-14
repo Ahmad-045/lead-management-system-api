@@ -3,6 +3,7 @@ class PhasesController < ApplicationController
 
   def create
     @phase = Phase.create set_phase_params
+    authorize @phase
     if @phase.save
       render json: {status: :ok}
     else
@@ -13,6 +14,7 @@ class PhasesController < ApplicationController
 
   def update
     @phase = Phase.find_by(id: params[:id])
+    authorize @phase
     if @phase.update set_phase_params
       render json: {status: :ok}
     else

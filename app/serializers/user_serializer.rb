@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :roles
+  attributes :id, :email, :username, :contact, :roles
 
   def roles
     object.roles
