@@ -9,9 +9,11 @@ class Users::SessionsController < Devise::SessionsController
     if current_user
       render json: {
         message: "You are logged in. ",
-        # user: current_user
         user: ActiveModelSerializers::SerializableResource.new(current_user, serializer: UserSerializer)
       }, status: :ok
+
+    else
+      render json: { status: :unauthorized}
     end
   end
 
