@@ -10,4 +10,12 @@ class UserPolicy < ApplicationPolicy
     @user.has_role? :admin
   end
 
+  # def is_bd
+  #   @user.has_role? :bd
+  # end
+
+  # def is_admin
+  #   @user.has_role? :admin
+  # end
+
 end

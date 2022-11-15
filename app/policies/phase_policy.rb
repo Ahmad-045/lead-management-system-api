@@ -14,12 +14,20 @@ class PhasePolicy < ApplicationPolicy
     is_bd || is_admin
   end
 
+  def assign_engineer?
+    is_bd || is_admin || is_manager
+  end
+
   def is_bd
     @user.has_role? :bd
   end
 
   def is_admin
     @user.has_role? :admin
+  end
+
+  def is_manager
+    @user.has_role? :manager
   end
 
 end

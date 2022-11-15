@@ -22,8 +22,19 @@ class PhasesController < ApplicationController
     end
   end
 
+  def destroy
+
+    @phase = Phase.find_by(id: params[:id])
+    if @phase.delete
+      render json: {status: :ok}
+    else
+      render json: {status: :error}
+    end
+  end
+
   def assign_engineer
     @phase = Phase.find_by(id: params[:data][:id])
+    authorize @phase
     @phase.user_ids= @phase.user_ids | params[:data][:engIds]  # union of two arrays i.e., '|'
   end
 

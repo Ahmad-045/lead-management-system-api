@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   respond_to :json
-
+  # before_action :filter_users, only: %i[index]
 
   def index
     authorize User
@@ -32,4 +32,16 @@ class UsersController < ApplicationController
       @user.add_role role
     end
   end
+
+
+  # GET /users/role=manager
+  # def filter_users
+  #   if request.query_string.present?
+  #     @filter_params = CGI.parse(request.query_string)
+  #     @desired_user_role = @filter_params['role'][0].parameterize.underscore.to_sym
+  #     @users = User.with_role @desired_user_role
+  #   else
+  #     @users = User.all
+  #   end
+  # end
 end
