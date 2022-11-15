@@ -24,6 +24,7 @@ class PhasesController < ApplicationController
 
   def destroy
     @phase = Phase.find_by(id: params[:id])
+    authorize @phase
     if @phase.delete
       render json: {status: :ok}
     else

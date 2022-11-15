@@ -16,6 +16,8 @@ class PhasePolicy < ApplicationPolicy
     is_bd || is_admin || is_manager
   end
 
+  alias destroy? assign_engineer?
+
   private
 
   def is_bd
