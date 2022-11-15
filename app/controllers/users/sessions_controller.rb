@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
     # byebug
     # render json: { status: :unauthorized} unless current_user
     # @data = UserSerializer.new(current_user)
-
+    # byebug
     if current_user
       render json: {
         message: "You are logged in. ",

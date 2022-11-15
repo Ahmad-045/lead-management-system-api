@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
 
   def create
-    byebug
     @project = Project.new set_project_params
+    authorize @project
 
     if @project.save
       @project.lead.update(sale: Date.today);
