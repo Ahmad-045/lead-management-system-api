@@ -22,6 +22,16 @@ class LeadsController < ApplicationController
     render json: @lead.phases
   end
 
+  def destroy
+    @lead = Lead.find_by(id: params[:id])
+    authorize @lead
+    if @lead.delete
+      render json: {status: :ok}
+    else
+      render json: {status: :error}
+    end
+  end
+
   def loggedIn
     user = get_user_from_token
     render json: {

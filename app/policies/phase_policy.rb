@@ -10,13 +10,13 @@ class PhasePolicy < ApplicationPolicy
     is_bd || is_admin
   end
 
-  def update?
-    is_bd || is_admin
-  end
+  alias update? create?
 
   def assign_engineer?
     is_bd || is_admin || is_manager
   end
+
+  private
 
   def is_bd
     @user.has_role? :bd

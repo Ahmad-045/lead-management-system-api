@@ -23,7 +23,6 @@ class PhasesController < ApplicationController
   end
 
   def destroy
-
     @phase = Phase.find_by(id: params[:id])
     if @phase.delete
       render json: {status: :ok}
