@@ -7,7 +7,13 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
-    is_bd || is_admin
+    is_admin || created_by_this_user?
+  end
+
+  private
+
+  def created_by_this_user?
+    @record.lead.user === @user
   end
 
   def is_bd

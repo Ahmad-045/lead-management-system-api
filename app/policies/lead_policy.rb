@@ -10,9 +10,16 @@ class LeadPolicy < ApplicationPolicy
     is_bd || is_admin
   end
 
-  alias destroy? create?
+  # alias destroy? create?
+  def destroy?
+    is_admin || created_by_this_user?
+  end
 
   private
+
+  def created_by_this_user?
+    @record.user === @user
+  end
 
   def is_bd
     @user.has_role? :bd
