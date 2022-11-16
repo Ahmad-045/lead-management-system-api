@@ -1,13 +1,17 @@
 class CommentsController <  ApplicationController
 
   def index
-    @comments = Comment.where('commentable_type=? and commentable_id =? ', params[:commentable_type].singularize.capitalize , adjust_params)
-    # byebug
+    @comments = Comment.where('commentable_type=? and commentable_id =? ', commmentable_type_format_match , adjust_params)
     render json: @comments, status: :ok
   end
 
   def create
-
+    @comment = Comment.new set_comment_params.merge(commentable_type: @data[:commentable_type].singularize.capitalize, user: current_user)
+    if @comment.save
+      render json: {status: :ok}
+    else
+      render json: {status: :error}
+    end
   end
 
   private
@@ -17,7 +21,13 @@ class CommentsController <  ApplicationController
     return params[:phase_id]
   end
 
-end
+  def commmentable_type_format_match
+    params[:commentable_type].singularize.capitalize
+  end
 
-# Comment.where('commentable_type=? and commentable_id =? ', 'Lead', params[:lead_id])
+  def set_comment_params
+    @data = params.require(:data).permit!
+  end
+
+end
 
