@@ -12,5 +12,6 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :phases
   has_one :project, dependent: :destroy
+  has_many :comments
 
 end

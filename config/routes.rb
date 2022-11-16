@@ -5,9 +5,17 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   resources :users
-  resources :leads
-  resources :phases
+
+  concern :commentable do
+    resources :comments
+  end
+
+  resources :phases, concerns: :commentable
+  resources :leads, concerns: :commentable
+
   resources :projects
+
+
 
   # root to: 'lead#loggedIn'
   get '/get_managers', to: 'users#get_managers'

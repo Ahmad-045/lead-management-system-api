@@ -11,7 +11,6 @@ class PhasesController < ApplicationController
     end
   end
 
-
   def update
     @phase = Phase.find_by(id: params[:id])
     authorize @phase
@@ -48,7 +47,4 @@ class PhasesController < ApplicationController
     params.require(:phase).permit!
   end
 
-  def extract_users_record
-
-  end
 end
