@@ -10,6 +10,8 @@ class UserPolicy < ApplicationPolicy
     @user.has_role? :admin
   end
 
+  alias destroy? index?
+
   # def is_bd
   #   @user.has_role? :bd
   # end

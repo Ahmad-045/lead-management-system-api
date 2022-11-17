@@ -15,6 +15,16 @@ class UsersController < ApplicationController
     render json: :ok
   end
 
+  def destroy
+    @user = User.find_by(id: params[:id])
+    authorize @user
+    if @user.destroy
+      render json: {status: :ok}
+    else
+      render json: {status: :error}
+    end
+  end
+
   def get_managers
     @manager = User.with_role :manager
     render json: @manager
