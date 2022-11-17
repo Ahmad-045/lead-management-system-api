@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :ok
 
     else
-      render json: { status: :unauthorized}
+      render json: { status: :unauthorized }
     end
   end
 

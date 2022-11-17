@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
 
   # root to: 'lead#loggedIn'
+
+  get 'user_with_role', to: 'users#user_with_role'
+
   get '/get_managers', to: 'users#get_managers'
   get '/get_engineers', to: 'users#get_engineers'
   get '/get_engineer_users/:id', to: 'phases#get_engineer_users'
